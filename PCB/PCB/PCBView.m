@@ -28,25 +28,13 @@
     [[UIColor grayColor] set];
     
     //线条粗细
-    circlePath.lineWidth = 10;
+    circlePath.lineWidth = 20;
+    
+    //终点类型
+    circlePath.lineCapStyle = kCGLineCapRound;
     
     //开始绘图
     [circlePath stroke];
-    
-    
-    //画layer
-    
-    CAShapeLayer *bgLayer = [CAShapeLayer layer];
-    bgLayer.frame = self.bounds;
-    bgLayer.fillColor = [UIColor clearColor].CGColor;
-    bgLayer.lineWidth = 20;
-    bgLayer.strokeColor = [UIColor grayColor].CGColor;
-    bgLayer.strokeStart = 0;
-    bgLayer.strokeEnd   = 1;
-    bgLayer.lineCap     = kCALineCapRound;
-    bgLayer.path        = circlePath.CGPath;
-    
-    [self.layer addSublayer:bgLayer];
     
     //进度shapelayer
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
@@ -68,32 +56,21 @@
     leftGradientlayer.frame = CGRectMake(0, 0, self.bounds.size.width/2.0, self.bounds.size.height);
     NSArray *arrayL = [NSArray arrayWithObjects:(id)[UIColor yellowColor].CGColor,(id)[UIColor orangeColor].CGColor, nil];
     [leftGradientlayer setColors: arrayL];
-
     [leftGradientlayer setLocations:@[(@(0)),@(0.9)]];
-
     [leftGradientlayer setStartPoint:CGPointMake(0, 1)];
     [leftGradientlayer setEndPoint:CGPointMake(0, 0)];
-
     [self.gradientlayer addSublayer:leftGradientlayer];
-    
-
     
     //渐变layer
     CAGradientLayer *rightGradientlayer = [CAGradientLayer layer];
-
     rightGradientlayer.frame = CGRectMake(self.bounds.size.width / 2.0, 0, self.bounds.size.width / 2.0, self.bounds.size.height);
     NSArray *array1 = [NSArray arrayWithObjects:(id)[UIColor orangeColor].CGColor,(id)[UIColor redColor].CGColor, nil];
     [rightGradientlayer setColors: array1];
-
     [rightGradientlayer setLocations:@[(@(0.1)),@(1)]];
-
     [rightGradientlayer setStartPoint:CGPointMake(0.5, 0)];
     [rightGradientlayer setEndPoint:CGPointMake(0.5, 1)];
-
     [self.gradientlayer addSublayer:rightGradientlayer];
-
     [self.layer addSublayer:self.gradientlayer];
-
     [self.gradientlayer setMask:self.shapeLayer];
     
 }

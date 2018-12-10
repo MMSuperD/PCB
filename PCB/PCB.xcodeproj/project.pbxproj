@@ -14,6 +14,7 @@
 		7A69D00321BA4B640058D797 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A69D00121BA4B640058D797 /* LaunchScreen.storyboard */; };
 		7A69D00621BA4B640058D797 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69D00521BA4B640058D797 /* main.m */; };
 		7A69D00E21BA4C000058D797 /* PCBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69D00D21BA4C000058D797 /* PCBView.m */; };
+		7A69D01121BE09370058D797 /* PLBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69D01021BE09370058D797 /* PLBView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		7A69D00521BA4B640058D797 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A69D00C21BA4C000058D797 /* PCBView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCBView.h; sourceTree = "<group>"; };
 		7A69D00D21BA4C000058D797 /* PCBView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PCBView.m; sourceTree = "<group>"; };
+		7A69D00F21BE09370058D797 /* PLBView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PLBView.h; sourceTree = "<group>"; };
+		7A69D01021BE09370058D797 /* PLBView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLBView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				7A69CFFA21BA4B630058D797 /* ViewController.m */,
 				7A69D00C21BA4C000058D797 /* PCBView.h */,
 				7A69D00D21BA4C000058D797 /* PCBView.m */,
+				7A69D00F21BE09370058D797 /* PLBView.h */,
+				7A69D01021BE09370058D797 /* PLBView.m */,
 				7A69CFFC21BA4B630058D797 /* Main.storyboard */,
 				7A69CFFF21BA4B640058D797 /* Assets.xcassets */,
 				7A69D00121BA4B640058D797 /* LaunchScreen.storyboard */,
@@ -146,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A69D01121BE09370058D797 /* PLBView.m in Sources */,
 				7A69D00E21BA4C000058D797 /* PCBView.m in Sources */,
 				7A69CFFB21BA4B630058D797 /* ViewController.m in Sources */,
 				7A69D00621BA4B640058D797 /* main.m in Sources */,
