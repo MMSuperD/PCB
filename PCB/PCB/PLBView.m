@@ -46,9 +46,9 @@
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     [self.layer addSublayer:gradientLayer];
     gradientLayer.frame = self.bounds;
-    NSArray *array1 = [NSArray arrayWithObjects:(id)[UIColor brownColor].CGColor,(id)[UIColor redColor].CGColor, nil];
+    NSArray *array1 = [NSArray arrayWithObjects:(id)[UIColor yellowColor].CGColor,(id)[UIColor orangeColor].CGColor,(id)[UIColor brownColor].CGColor,(id)[UIColor redColor].CGColor, nil];
     [gradientLayer setColors: array1];
-    [gradientLayer setLocations:@[(@(0)),@(1)]];
+    [gradientLayer setLocations:@[(@(0)),@(0.33),@(0.66),@(1)]];
     [gradientLayer setStartPoint:CGPointMake(0, 0)];
     [gradientLayer setEndPoint:CGPointMake(1, 0)];
     [gradientLayer setMask:self.shapeLayer];

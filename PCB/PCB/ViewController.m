@@ -10,6 +10,7 @@
 #import "PCBView.h"
 #import "PLBView.h"
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @property (nonatomic,weak)PCBView *pcb;
 
@@ -31,20 +32,24 @@
     [self.view addSubview:plb];
     self.plb = plb;
     self.plb.backgroundColor = [UIColor whiteColor];
-    
+
 }
 - (IBAction)actionAnimation:(UIButton *)sender {
-    
     self.pcb.progressValue = 0.8;
     self.plb.progressValue = 0.8;
-    
 }
-
 
 - (IBAction)clearZero:(UIButton *)sender {
     
     self.pcb.progressValue = 0.0;
     self.plb.progressValue = 0.0;
+}
+
+#pragma 滑动条移动
+
+- (IBAction)Slide:(UISlider *)sender {
+    self.pcb.progressValue = sender.value;
+    self.plb.progressValue = sender.value;
 }
 
 
