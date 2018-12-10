@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PCBView : UIView
 
+
+/**
+ value: 0 ~ 1
+ */
+@property (nonatomic,assign)CGFloat progressValue;
+
 @end
 
 NS_ASSUME_NONNULL_END

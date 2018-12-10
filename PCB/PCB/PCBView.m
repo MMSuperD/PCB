@@ -12,6 +12,8 @@
 
 @property (nonatomic,strong)CAShapeLayer *shapeLayer;
 
+@property (nonatomic,strong)CAGradientLayer *gradientlayer;
+
 @end
 
 @implementation PCBView
@@ -23,7 +25,7 @@
     UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.bounds.size.width/2.0, self.bounds.size.height/2.0) radius:(self.bounds.size.width - 20)/2.0 startAngle:M_PI_2 + M_PI_4  endAngle:2 * M_PI + M_PI_4 clockwise:YES];
     
     //设置颜色
-    [[UIColor blueColor] set];
+    [[UIColor grayColor] set];
     
     //线条粗细
     circlePath.lineWidth = 10;
@@ -38,7 +40,7 @@
     bgLayer.frame = self.bounds;
     bgLayer.fillColor = [UIColor clearColor].CGColor;
     bgLayer.lineWidth = 20;
-    bgLayer.strokeColor = [UIColor brownColor].CGColor;
+    bgLayer.strokeColor = [UIColor grayColor].CGColor;
     bgLayer.strokeStart = 0;
     bgLayer.strokeEnd   = 1;
     bgLayer.lineCap     = kCALineCapRound;
@@ -47,7 +49,7 @@
     [self.layer addSublayer:bgLayer];
     
     //进度shapelayer
-   CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     self.shapeLayer = shapeLayer;
     shapeLayer.frame = self.bounds;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
@@ -59,19 +61,54 @@
     shapeLayer.path = circlePath.CGPath;
     [self.layer addSublayer:self.shapeLayer];
     
+    self.gradientlayer = [CAGradientLayer layer];
     //渐变layer
     CAGradientLayer *leftGradientlayer = [CAGradientLayer layer];
-    
-    leftGradientlayer.frame = CGRectMake(0, 0, self.bounds.size.width / 2.0, self.bounds.size.height);
-    NSArray *array = [NSArray arrayWithObjects:(id)[UIColor yellowColor].CGColor,(id)[UIColor purpleColor].CGColor, nil];
-    [leftGradientlayer setColors: array];
-    
-    [leftGradientlayer setLocations:@[(@(0)),@(0.5)]];
-    
+
+    leftGradientlayer.frame = CGRectMake(0, 0, self.bounds.size.width/2.0, self.bounds.size.height);
+    NSArray *arrayL = [NSArray arrayWithObjects:(id)[UIColor yellowColor].CGColor,(id)[UIColor orangeColor].CGColor, nil];
+    [leftGradientlayer setColors: arrayL];
+
+    [leftGradientlayer setLocations:@[(@(0)),@(0.9)]];
+
     [leftGradientlayer setStartPoint:CGPointMake(0, 1)];
     [leftGradientlayer setEndPoint:CGPointMake(0, 0)];
+
+    [self.gradientlayer addSublayer:leftGradientlayer];
     
-    [self.layer addSublayer:leftGradientlayer];
+
+    
+    //渐变layer
+    CAGradientLayer *rightGradientlayer = [CAGradientLayer layer];
+
+    rightGradientlayer.frame = CGRectMake(self.bounds.size.width / 2.0, 0, self.bounds.size.width / 2.0, self.bounds.size.height);
+    NSArray *array1 = [NSArray arrayWithObjects:(id)[UIColor orangeColor].CGColor,(id)[UIColor redColor].CGColor, nil];
+    [rightGradientlayer setColors: array1];
+
+    [rightGradientlayer setLocations:@[(@(0.1)),@(1)]];
+
+    [rightGradientlayer setStartPoint:CGPointMake(0.5, 0)];
+    [rightGradientlayer setEndPoint:CGPointMake(0.5, 1)];
+
+    [self.gradientlayer addSublayer:rightGradientlayer];
+
+    [self.layer addSublayer:self.gradientlayer];
+
+    [self.gradientlayer setMask:self.shapeLayer];
+    
+}
+
+
+
+- (void)setProgressValue:(CGFloat)progressValue {
+    _progressValue = progressValue;
+    //这里需要判断新值和旧值
+    [UIView animateWithDuration:2 animations:^{
+       
+        self.shapeLayer.strokeEnd = progressValue;
+        
+    }];
+    
 }
 
 
